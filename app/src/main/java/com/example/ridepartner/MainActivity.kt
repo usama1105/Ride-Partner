@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.ridepartner.navigation.AppNavGraph
 import com.example.ridepartner.ui.theme.RidePartnerTheme
+import com.ridepartner.login.navigation.LoginScreens
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,17 +11,22 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.ridepartner.login.navigation.LoginScreens
 
 
 @Composable
-fun LoginFragment(navigate: (Any) -> Unit) {
-    val viewModel: LoginViewModel = viewModel()
+fun LoginFragment(
+    onLoginClick: () -> Unit = {},
+    state: LoginScreenState = LoginScreenState()
+) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -29,8 +34,8 @@ fun LoginFragment(navigate: (Any) -> Unit) {
         verticalArrangement = Arrangement.Center
     ) {
         TextField(
-            value = viewModel.email.value,
-            onValueChange = { viewModel.email.value = it },
+            value = state.email,
+            onValueChange = {"malaika"},
             label = { Text("Email") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -41,8 +46,8 @@ fun LoginFragment(navigate: (Any) -> Unit) {
         Spacer(modifier = Modifier.height(16.dp))
 
         TextField(
-            value = viewModel.password.value,
-            onValueChange = { viewModel.password.value = it },
+            value = state.password,
+            onValueChange = { "12345678" },
             label = { Text("Password") },
             modifier = Modifier.fillMaxWidth()
         )
@@ -50,17 +55,12 @@ fun LoginFragment(navigate: (Any) -> Unit) {
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            // onClick = { viewModel.onLoginClick() },
-            onClick = { navigate(LoginScreens.Dashboard) },
+            onClick = {
+                onLoginClick.invoke()
+             },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Submit")
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginPreview() {
-    LoginFragment(navigate = {})
 }

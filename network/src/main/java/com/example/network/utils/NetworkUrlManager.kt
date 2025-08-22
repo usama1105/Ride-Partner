@@ -9,11 +9,11 @@ class NetworkUrlManager {
         //actual test server
         private val TEST_BASE_URL =
 //        testing
-            "https://ublinsurer-apis.localdevspace.link/$API_VERSION"
+            "https://commutebuddymw-production.up.railway.app/$API_VERSION"
 
         private val RELEASE_BASE_URL =
 //        testing
-            "https://ublinsurer-apis.localdevspace.link/$API_VERSION"
+            "https://commutebuddymw-production.up.railway.app/$API_VERSION"
 
     }
 

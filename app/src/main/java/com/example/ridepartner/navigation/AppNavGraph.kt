@@ -1,21 +1,23 @@
 package com.example.ridepartner.navigation
 
+
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-
+import androidx.navigation.compose.rememberNavController
 import com.ridepartner.login.navigation.LoginScreens
 import com.ridepartner.login.navigation.loginNavigationGraph
 
 @Composable
 fun AppNavGraph(
-    navController: NavHostController,
-    startDestination: Any = LoginScreens.Login // Keep as Login
+    navController: NavHostController = rememberNavController(),
+    startDestination: Any = LoginScreens.AppEntryPoint
 ) {
     NavHost(
-        navController,
-        startDestination = startDestination
+        navController = navController,
+        startDestination = startDestination,
     ) {
-        loginNavigationGraph(navController)
+        loginNavigationGraph(navController = navController)
     }
 }
+
