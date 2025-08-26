@@ -3,7 +3,7 @@ package com.example.network.utils
 object NetworkBuilder {
     lateinit var baseUrl: String
     private var isDebug = true
-    var API_VERSION = "api/v1/"
+    var API_VERSION = "api/"
     private var isMocked = false
 
     fun init(

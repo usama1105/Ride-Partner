@@ -1,6 +1,5 @@
 package com.example.network.api
 
-import com.example.network.RequestModel
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -15,7 +14,7 @@ interface ApiService {
     @POST
     suspend fun performPostRequest(
         @Url url: String,
-        @Body inputModel: RequestModel,
+        @Body inputModel: Any,
     ): Response<JsonObject>
 
     @Multipart

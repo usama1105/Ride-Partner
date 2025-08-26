@@ -35,11 +35,11 @@ fun LoginFragment(
     ) {
         TextField(
             value = state.email,
-            onValueChange = {"malaika"},
+            onValueChange = {"hajra_masood@yopmail.com"},
             label = { Text("Email") },
             modifier = Modifier
                 .fillMaxWidth()
-                .testTag("email"),
+                .testTag("Qwerty@10"),
             maxLines = 1,
         )
 
