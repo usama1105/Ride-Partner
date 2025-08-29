@@ -425,6 +425,8 @@ import retrofit2.Response
 object NetworkUtils {
     var accessToken = ""
     var deviceId = ""
+    var platformId = "android"
+
 }
 
 val apiService: ApiService by inject(ApiService::class.java)
@@ -469,7 +471,9 @@ suspend inline fun <T : Any, reified V : Any> performPostRequestSimple(
     return try {
         response = apiService.performPostRequest(
             url = apiFullName,
-            inputModel = processRequest(input, encrypt) // 👈 handles raw vs payload
+            inputModel = processRequest(input, encrypt), // 👈 handles raw vs payload
+            platformId = NetworkUtils.platformId
+
         )
         Log.d("isSusccess", response.isSuccessful.toString())
         if (response.isSuccessful) {
@@ -590,7 +594,8 @@ suspend inline fun <T : Any, reified V : Any> performMultiPartRequest(
             url = apiName,
             files = parts.toMutableList().apply {
                 add(model.toPayload().toMultiParts("payload"))
-            }
+            },
+            platformId = NetworkUtils.platformId
         )
     })
 }
@@ -611,6 +616,7 @@ suspend inline fun <T : Any, reified V : Any> performMultiPartRequestWithMultipl
             url = apiName,
             file1 = list1.toMutableList(),
             file2 = list2.toMutableList().apply { add(model.toPayload().toMultiParts("payload")) },
+            platformId = NetworkUtils.platformId
         )
         if (response.isSuccessful) {
             ApiLogger.logApiData(
